@@ -17,9 +17,8 @@ module Solution01
       else
         @position -= times
       end
-
-      @position += POSITIONS
-      @position = @position % POSITIONS
+      
+      @position = (@position + POSITIONS) % POSITIONS
 
       @zeros += 1 if @position == 0
     end
