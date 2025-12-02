@@ -1,4 +1,5 @@
 require 'yaml'
+require 'pry'
 
 def solve(day, only_test: false)
   folder_name = "%02d" % day
@@ -37,7 +38,7 @@ def solve(day, only_test: false)
           puts "✅"
         else
           puts "❌"
-          puts "Solution should be: #{solution}"
+          puts "Expected solution: #{solution}"
         end
       end
     end
