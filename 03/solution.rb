@@ -1,0 +1,44 @@
+module Solution03
+  def self.solve1(data)
+    result = 0
+
+    data.each do |bank|
+      result += max_jolt1(bank.split("").map(&:to_i))
+    end
+
+    return result
+  end
+
+  def self.max_jolt1(bank)
+    first = bank[..-2].max # It can't be on the last digit
+    first_pos = bank.index(first)
+
+    second = bank[(first_pos+1)..].max
+
+    (first.to_s + second.to_s).to_i
+  end
+
+  def self.solve2(data)
+    result = 0
+
+    data.each do |bank|
+      result += max_jolt2(bank.split("").map(&:to_i))
+    end
+
+    return result
+  end
+
+  def self.max_jolt2(bank, amount=12)
+    result = ""
+    from = 0
+
+    amount.downto(1) do |num|
+      to = bank.length - num
+      max = bank[from..to].max
+      result += max.to_s
+      from = bank[from..to].index(max) + 1 + from
+    end
+
+    return result.to_i
+  end
+end
