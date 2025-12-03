@@ -3,7 +3,7 @@ module Solution03
     result = 0
 
     data.each do |bank|
-      result += max_jolt(bank.split("").map(&:to_i), 2)
+      result += max_jolt(bank, batterys_to_flip: 2)
     end
 
     return result
@@ -13,17 +13,19 @@ module Solution03
     result = 0
 
     data.each do |bank|
-      result += max_jolt(bank.split("").map(&:to_i))
+      result += max_jolt(bank, batterys_to_flip: 12)
     end
 
     return result
   end
 
-  def self.max_jolt(bank, amount=12)
+  def self.max_jolt(bank, batterys_to_flip:) 
+    bank = bank.split("").map(&:to_i)
+
     result = ""
     from = 0
 
-    amount.downto(1) do |num|
+    batterys_to_flip.downto(1) do |num|
       to = bank.length - num
       max = bank[from..to].max
       result += max.to_s
