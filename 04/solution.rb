@@ -4,13 +4,7 @@ module Solution04
   end
 
   def self.solve2(data)
-    grid = Grid.new(data)
-
-    rolls_start = grid.rolls
-
-    grid.remove_all_rolls
-
-    return rolls_start - grid.rolls
+    Grid.new(data).remove_all_rolls
   end
 end
 
@@ -24,7 +18,9 @@ class Grid
   end
 
   def remove_all_rolls
+    rolls_start = rolls
     nil while remove_rolls > 0
+    return rolls_start - rolls
   end
 
   def remove_rolls
