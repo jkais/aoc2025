@@ -24,8 +24,7 @@ class Grid
   end
 
   def remove_all_rolls
-    while remove_rolls > 0 do
-    end
+    nil while remove_rolls > 0
   end
 
   def remove_rolls
