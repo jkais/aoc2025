@@ -77,11 +77,4 @@ class Grid
   def rolls
     data.map { |row| row.join }.join.count("@")
   end
-
-  def print
-    puts
-    data.each do |row|
-      puts row.join
-    end
-  end
 end
